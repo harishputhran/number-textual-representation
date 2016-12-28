@@ -2,13 +2,12 @@ package com.clean.code.text;
 
 public class FourDigitTextSpeller extends ThreeDigitTextSpeller {
 	
-	private final String TEXT_PREFIX = "THOUSAND";
+	private final String THOUSAND_TEXT = "THOUSAND";
+	private final int INDEX_VALUE = 1000;
 	
 	public String getText(int number){		
-		int remainder = number % 1000;
-		int multiplier = number / 1000;
-		return generateText(singleDigitNumbersText.get(multiplier), 
-							TEXT_PREFIX, 
-							super.getText(remainder));		
+		return generateText(
+				singleDigitNumbersText.get(getDigitAtHighestDecimalIndex(number, INDEX_VALUE)),
+				THOUSAND_TEXT, super.getText(getRemainingDigits(number, INDEX_VALUE)));	
 	}
 }

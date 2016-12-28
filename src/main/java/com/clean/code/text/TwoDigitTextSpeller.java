@@ -6,28 +6,38 @@ import java.util.List;
 
 public class TwoDigitTextSpeller extends SingleDigitTextSpeller{
 	
-	private final int INDEX_VALUE_10 = 10;
+	private final int INDEX_VALUE = 10;
 	protected final String BLANK_SPACE_LITERAL = " ";
 	
 	// First 2 entries are left blank to facilitate easy fetch for numbers from 20.
 	private final List<String> tensText = asList("", "", "TWENTY", "THIRTY", "FORTY", "FIFTY", "SIXTY", "SEVENTY", "EIGHTY", "NINETY");
 	private final List<String> tenTillTwentyText = asList("TEN", "ELEVEN", "TWELVE", "THIRTEEN", "FOURTEEN", "FIFTEEN", "SIXTEEN", "SEVENTEEN", "EIGHTEEN", "NINETEEN");
+
 	
 	public String getText(int number){
-		return isBetween10and20(number) ?  tenTillTwentyText.get(number - 10) 
+		return isBetween10and20(number) ? tenTillTwentyText.get(number - 10) 
 										: getTextForNumberGreaterThan20(number);
-	}
-
-	protected boolean isBetween10and20(int number) {
-		return number >= 10 && number < 20;
 	}
 	
 	protected String getTextForNumberGreaterThan20(int number) {
-		int remainder = number % INDEX_VALUE_10;
-		int multiplerOfTen = number / INDEX_VALUE_10;
+		int remainingDigits = getRemainingDigits(number, INDEX_VALUE);
+		int digitAtTenthDecimalIndex = getDigitAtHighestDecimalIndex(number, INDEX_VALUE);
 		
-		return isMultiple(remainder) ? tensText.get(multiplerOfTen) 
-				                          : generateText(tensText.get(multiplerOfTen), super.getText(remainder));
+		return isMultiple(remainingDigits) ? tensText.get(digitAtTenthDecimalIndex) 
+				                           : generateText(tensText.get(digitAtTenthDecimalIndex), 
+				                        		          super.getText(remainingDigits));
+	}
+	
+	protected boolean isBetween10and20(int number) {
+		return number >= 10 && number < 20;
+	}
+
+	protected int getDigitAtHighestDecimalIndex(int number, int decimalIndexValue) {
+		return number/decimalIndexValue;
+	}
+
+	protected int getRemainingDigits(int number, int decimalIndexValue) {
+		return number % decimalIndexValue;
 	}
 
 	protected boolean isMultiple(int remainder) {
