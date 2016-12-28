@@ -7,7 +7,7 @@ import java.util.List;
 public class TwoDigitTextSpeller extends SingleDigitTextSpeller{
 	
 	private final int INDEX_VALUE_10 = 10;
-	private final String BLANK_SPACE_LITERAL = " ";
+	protected final String BLANK_SPACE_LITERAL = " ";
 	
 	// First 2 entries are left blank to facilitate easy fetch for numbers from 20.
 	private final List<String> tensText = asList("", "", "TWENTY", "THIRTY", "FORTY", "FIFTY", "SIXTY", "SEVENTY", "EIGHTY", "NINETY");
@@ -26,20 +26,21 @@ public class TwoDigitTextSpeller extends SingleDigitTextSpeller{
 		int remainder = number % INDEX_VALUE_10;
 		int multiplerOfTen = number / INDEX_VALUE_10;
 		
-		return isMultipleOfTen(remainder) ? tensText.get(multiplerOfTen) 
-				                          : generateText(remainder, multiplerOfTen);
+		return isMultiple(remainder) ? tensText.get(multiplerOfTen) 
+				                          : generateText(tensText.get(multiplerOfTen), super.getText(remainder));
 	}
 
-	protected String generateText(int remainder, int multiplerOfTen) {
-		StringBuilder builder = new StringBuilder();
-		builder.append(tensText.get(multiplerOfTen));
-		builder.append(BLANK_SPACE_LITERAL);
-		builder.append(super.getText(remainder));
-		return builder.toString().trim();
-	}
-
-	protected boolean isMultipleOfTen(int remainder) {
+	protected boolean isMultiple(int remainder) {
 		return remainder == 0;
+	}
+	
+	protected String generateText(String... texts) {
+		StringBuilder builder = new StringBuilder();
+		for(String text : texts){
+			builder.append(text);
+			builder.append(BLANK_SPACE_LITERAL);
+		}		
+		return builder.toString().trim();
 	}
 }
 	
