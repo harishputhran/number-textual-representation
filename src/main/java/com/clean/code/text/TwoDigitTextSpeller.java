@@ -47,10 +47,16 @@ public class TwoDigitTextSpeller extends SingleDigitTextSpeller{
 	protected String generateText(String... texts) {
 		StringBuilder builder = new StringBuilder();
 		for(String text : texts){
-			builder.append(text);
-			builder.append(BLANK_SPACE_LITERAL);
+			if(isNotBlank(text)){
+				builder.append(text);
+				builder.append(BLANK_SPACE_LITERAL);
+			}			
 		}		
 		return builder.toString().trim();
+	}
+
+	private boolean isNotBlank(String text) {		
+		return text.trim().length() > 0;
 	}
 }
 	
