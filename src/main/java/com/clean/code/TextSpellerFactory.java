@@ -3,6 +3,7 @@ package com.clean.code;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.clean.code.text.FourDigitTextSpeller;
 import com.clean.code.text.SingleDigitTextSpeller;
 import com.clean.code.text.ThreeDigitTextSpeller;
 import com.clean.code.text.TwoDigitTextSpeller;
@@ -16,6 +17,7 @@ public class TextSpellerFactory {
 		digitToTextSpeller.put(1, new SingleDigitTextSpeller());
 		digitToTextSpeller.put(2, new TwoDigitTextSpeller());
 		digitToTextSpeller.put(3, new ThreeDigitTextSpeller());
+		digitToTextSpeller.put(4, new FourDigitTextSpeller());
 	}
 	
 	public TextSpeller getTextSpeller(int number){		
