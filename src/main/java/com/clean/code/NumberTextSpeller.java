@@ -11,6 +11,11 @@ public class NumberTextSpeller {
 	}
 	
 	public String getText(int inputNumber) {
-		return inputNumber == 10 ? "TEN": singleDigitSpeller.getText(inputNumber);
+		return inputNumber < 10 ? singleDigitSpeller.getText(inputNumber)
+				                : getTextForTwoDigitNumber(inputNumber);
+	}
+
+	private String getTextForTwoDigitNumber(int inputNumber) {
+		return inputNumber == 11 ? "ELEVEN" : "TEN";
 	}
 }
