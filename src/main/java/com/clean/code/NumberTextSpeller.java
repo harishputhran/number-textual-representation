@@ -1,20 +1,16 @@
 package com.clean.code;
 
-import java.util.HashMap;
-import java.util.Map;
+import com.clean.code.text.SingleDigitTextSpeller;
 
 public class NumberTextSpeller {
 	
-	private Map<Integer, String> numberToText;
+	private SingleDigitTextSpeller singleDigitSpeller;
 	
 	public NumberTextSpeller(){
-		numberToText = new HashMap<>();
-		numberToText.put(0, "ZERO");
-		numberToText.put(1, "ONE");
-		numberToText.put(9, "NINE");
+		singleDigitSpeller = new SingleDigitTextSpeller();
 	}
-
+	
 	public String getText(int inputNumber) {
-		return numberToText.get(inputNumber);		
+		return singleDigitSpeller.getText(inputNumber);
 	}
 }
