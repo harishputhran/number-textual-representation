@@ -23,4 +23,10 @@ public class NumberTextSpellerShould {
 		NumberTextSpeller numberTextSeller = new NumberTextSpeller();
 		assertEquals("NINE", numberTextSeller.getText(9));
 	}
+	
+	@Test
+	public void return_ten_for_input_number_10(){
+		NumberTextSpeller numberTextSeller = new NumberTextSpeller();
+		assertEquals("TEN", numberTextSeller.getText(10));
+	}
 }
