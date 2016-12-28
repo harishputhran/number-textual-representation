@@ -53,4 +53,16 @@ public class NumberTextSpellerShould {
 		NumberTextSpeller numberTextSeller = new NumberTextSpeller();
 		assertEquals("ONE HUNDRED THIRTY NINE", numberTextSeller.getText(139));
 	}
+	
+	@Test
+	public void return_nine_hundred_eighty_seven_for_input_number_987(){
+		NumberTextSpeller numberTextSeller = new NumberTextSpeller();
+		assertEquals("NINE HUNDRED EIGHTY SEVEN", numberTextSeller.getText(987));
+	}
+	
+	@Test
+	public void return_nine_thousand_eight_hundred_seventy_for_input_number_9870(){
+		NumberTextSpeller numberTextSeller = new NumberTextSpeller();
+		assertEquals("NINE THOUSAND EIGHT HUNDRED SEVENTY", numberTextSeller.getText(9870));
+	}
 }
