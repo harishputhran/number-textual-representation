@@ -35,7 +35,7 @@ public class TwoDigitTextSpeller extends SingleDigitTextSpeller{
 		builder.append(tensText.get(multiplerOfTen));
 		builder.append(BLANK_SPACE_LITERAL);
 		builder.append(super.getText(remainder));
-		return builder.toString();
+		return builder.toString().trim();
 	}
 
 	protected boolean isMultipleOfTen(int remainder) {

@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.clean.code.text.SingleDigitTextSpeller;
+import com.clean.code.text.ThreeDigitTextSpeller;
 import com.clean.code.text.TwoDigitTextSpeller;
 
 public class TextSpellerFactory {
@@ -14,6 +15,7 @@ public class TextSpellerFactory {
 		digitToTextSpeller = new HashMap<>();
 		digitToTextSpeller.put(1, new SingleDigitTextSpeller());
 		digitToTextSpeller.put(2, new TwoDigitTextSpeller());
+		digitToTextSpeller.put(3, new ThreeDigitTextSpeller());
 	}
 	
 	public TextSpeller getTextSpeller(int number){		
