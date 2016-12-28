@@ -8,9 +8,6 @@ public class SingleDigitTextSpeller {
 	private List<String> textForNumberTill9 = asList("","ONE","TWO","THREE","FOUR","FIVE","SIX","SEVEN","EIGHT","NINE");
 	
 	public String getText(int number){
-		if(number == 0){
-			return "ZERO";
-		}
-		return textForNumberTill9.get(number);
+		return number == 0 ? "ZERO" : textForNumberTill9.get(number);
 	}
 }

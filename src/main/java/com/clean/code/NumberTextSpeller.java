@@ -11,9 +11,6 @@ public class NumberTextSpeller {
 	}
 	
 	public String getText(int inputNumber) {
-		if(inputNumber == 10){
-			return "TEN";
-		}
-		return singleDigitSpeller.getText(inputNumber);
+		return inputNumber == 10 ? "TEN": singleDigitSpeller.getText(inputNumber);
 	}
 }
