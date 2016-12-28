@@ -41,4 +41,16 @@ public class NumberTextSpellerShould {
 		NumberTextSpeller numberTextSeller = new NumberTextSpeller();
 		assertEquals("TWENTY", numberTextSeller.getText(20));
 	}
+	
+	@Test
+	public void return_thirty_nine_for_input_number_39(){
+		NumberTextSpeller numberTextSeller = new NumberTextSpeller();
+		assertEquals("THIRTY NINE", numberTextSeller.getText(39));
+	}
+	
+	@Test
+	public void return_one_hundred_thirty_nine_for_input_number_139(){
+		NumberTextSpeller numberTextSeller = new NumberTextSpeller();
+		assertEquals("ONE HUNDRED THIRTY NINE", numberTextSeller.getText(139));
+	}
 }
