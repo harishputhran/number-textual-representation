@@ -65,4 +65,10 @@ public class NumberTextSpellerShould {
 		NumberTextSpeller numberTextSeller = new NumberTextSpeller();
 		assertEquals("NINE THOUSAND EIGHT HUNDRED SEVENTY", numberTextSeller.getText(9870));
 	}
+	
+	@Test
+	public void return_one_thousand_one_for_input_number_1001(){
+		NumberTextSpeller numberTextSeller = new NumberTextSpeller();
+		assertEquals("ONE THOUSAND ONE", numberTextSeller.getText(1001));
+	}
 }
